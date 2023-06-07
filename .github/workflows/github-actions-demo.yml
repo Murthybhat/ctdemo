@@ -15,4 +15,10 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "🍏 This job's status is ${{ job.status }}." 
+  rest-call:
+    runs-on: ubuntu-latest
+    steps:
+    - name: REST API with curl
+      run: |
+        curl -X GET "https://reqres.in/api/users"     
