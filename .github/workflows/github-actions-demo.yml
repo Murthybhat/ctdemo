@@ -23,15 +23,16 @@ jobs:
       run: |
         curl -X GET "https://reqres.in/api/users"
   change-and-push:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2     
       - name: Change something
         run: |
-          find . -type f -name "*.md" -print0 | xargs -0 sed -i "s/bar/foo/g"
+          # find . -type f -name "*.md" -print0 | xargs -0 sed -i "s/bar/foo/g"
+          echo "test">> 1.txt
       - name: Commit and push changes
-        uses: devops-infra/action-commit-push@master
+        uses: GuillaumeFalourd/git-commit-push@v1.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Replaced bar with foo        
+          commit_message: Replaced bar with foo
